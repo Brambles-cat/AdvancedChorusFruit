@@ -1,0 +1,9 @@
+name: AdvancedChorusFruit
+version: 1.0.0
+author: JiovannyAlejos
+main: me.JiovannyAlejos.advancedChorusFruit.Main
+description: place signs at any location and write a name for it and a y coordinate underneath, then rename a chorus fruit to the name on the sign so when you eat it, it'll teleport you there
+
+commands:
+  listlocations:
+   description: shows a list of all signs that can be teleported to and their coordinates

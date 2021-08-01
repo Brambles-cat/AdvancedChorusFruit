@@ -31,24 +31,21 @@ public class entityBurn implements Listener {
 			String itemDisplayName = item.getItemStack().getItemMeta().getDisplayName();
 			if(item.getItemStack().getType() == Material.ENDER_EYE && itemDisplayName.substring(0, 4).equals("set ") && itemDisplayName.length() > 4) {
 				Gson gson = new Gson();
+				System.out.println(1);
 				try {
 					Reader reader = Files.newBufferedReader(Paths.get("C:\\Users\\gaela\\OneDrive\\Documents\\advanedChorusFruitPlugin\\src\\me\\JiovannyAlejos\\advancedChorusFruit\\tpData.json"));
-					Writer writer = new FileWriter("C:\\Users\\gaela\\OneDrive\\Documents\\advanedChorusFruitPlugin\\src\\me\\JiovannyAlejos\\advancedChorusFruit\\tpData.json");
 					CoordinateData data = gson.fromJson(reader, CoordinateData.class);
 					Location entityLoc = entity.getLocation();
 					data.coordinates.add(String.valueOf(Math.floor(entityLoc.getX()) + 0.5) + "|" + String.valueOf(Math.floor(entityLoc.getY())) + "|" + String.valueOf(Math.floor(entityLoc.getZ()) + .5));
-					data.locNames.add(itemDisplayName.substring(5));
-					try{
-						System.out.println(data.toString() + "hi1");
-					} catch (Error err) {
-						System.out.println(data + "hi2");
-					}
-					System.out.println(itemDisplayName.substring(5));
+					data.locNames.add(itemDisplayName.substring(4));
+					System.out.println(2);
+					Writer writer = new FileWriter("C:\\Users\\gaela\\OneDrive\\Documents\\advanedChorusFruitPlugin\\src\\me\\JiovannyAlejos\\advancedChorusFruit\\tpData.json");
+					System.out.println(itemDisplayName.substring(4));
 					Bukkit.broadcastMessage("New warp location \"" + itemDisplayName.substring(4) + "\" set at X:" + item.getLocation().getBlockX() + " Y:" + item.getLocation().getBlockY() + " Z:" + item.getLocation().getBlockZ());
 					gson.toJson(data, writer);
 					writer.close();
 					reader.close();
-				} catch (IOException e) {e.printStackTrace();}
+				} catch (IOException e) {e.printStackTrace(); System.out.println("poopy burn");}
 
 			}
 		}

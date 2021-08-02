@@ -22,7 +22,7 @@ import me.JiovannyAlejos.advancedChorusFruit.CoordinateData;
 
 
 
-public class entityBurn implements Listener {
+public class EntityBurn implements Listener {
 	@EventHandler
 	public void onItemBurn(EntityCombustByBlockEvent event) {
 		Entity entity = event.getEntity();
@@ -31,21 +31,24 @@ public class entityBurn implements Listener {
 			String itemDisplayName = item.getItemStack().getItemMeta().getDisplayName();
 			if(item.getItemStack().getType() == Material.ENDER_EYE && itemDisplayName.substring(0, 4).equals("set ") && itemDisplayName.length() > 4) {
 				Gson gson = new Gson();
-				System.out.println(1);
 				try {
 					Reader reader = Files.newBufferedReader(Paths.get("C:\\Users\\gaela\\OneDrive\\Documents\\advanedChorusFruitPlugin\\src\\me\\JiovannyAlejos\\advancedChorusFruit\\tpData.json"));
 					CoordinateData data = gson.fromJson(reader, CoordinateData.class);
 					Location entityLoc = entity.getLocation();
-					data.coordinates.add(String.valueOf(Math.floor(entityLoc.getX()) + 0.5) + "|" + String.valueOf(Math.floor(entityLoc.getY())) + "|" + String.valueOf(Math.floor(entityLoc.getZ()) + .5));
-					data.locNames.add(itemDisplayName.substring(4));
-					System.out.println(2);
+					String displayName = itemDisplayName.substring(4);
+					if(data.locNames.contains(displayName)) {
+						data.coordinates.set(data.locNames.indexOf(displayName), String.valueOf(Math.floor(entityLoc.getX()) + 0.5) + "|" + String.valueOf(Math.floor(entityLoc.getY())) + "|" + String.valueOf(Math.floor(entityLoc.getZ()) + .5));
+						Bukkit.broadcastMessage("Changed warp location of \"" + itemDisplayName.substring(4) + "\" to X:" + item.getLocation().getBlockX() + " Y:" + item.getLocation().getBlockY() + " Z:" + item.getLocation().getBlockZ());
+					} else {
+						data.coordinates.add(String.valueOf(Math.floor(entityLoc.getX()) + 0.5) + "|" + String.valueOf(Math.floor(entityLoc.getY())) + "|" + String.valueOf(Math.floor(entityLoc.getZ()) + .5));
+						data.locNames.add(displayName);
+						Bukkit.broadcastMessage("New warp location \"" + itemDisplayName.substring(4) + "\" set at X:" + item.getLocation().getBlockX() + " Y:" + item.getLocation().getBlockY() + " Z:" + item.getLocation().getBlockZ());
+					}
 					Writer writer = new FileWriter("C:\\Users\\gaela\\OneDrive\\Documents\\advanedChorusFruitPlugin\\src\\me\\JiovannyAlejos\\advancedChorusFruit\\tpData.json");
-					System.out.println(itemDisplayName.substring(4));
-					Bukkit.broadcastMessage("New warp location \"" + itemDisplayName.substring(4) + "\" set at X:" + item.getLocation().getBlockX() + " Y:" + item.getLocation().getBlockY() + " Z:" + item.getLocation().getBlockZ());
 					gson.toJson(data, writer);
 					writer.close();
 					reader.close();
-				} catch (IOException e) {e.printStackTrace(); System.out.println("poopy burn");}
+				} catch (IOException e) {e.printStackTrace(); System.out.println("no gud burn");}
 
 			}
 		}

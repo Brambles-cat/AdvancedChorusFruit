@@ -12,6 +12,6 @@ Intstructions:
 
 PLANS: (ordered by priority)
 
-1. Check if warp location name exists when burning eye -> changes coordinates for that name if it does, ignores if it's in the same place
+1. ~~Check if warp location name exists when burning eye -> changes coordinates for that name if it does, ignores if it's in the same place~~ Completed
 2. Commands for showing a list of warp locations and their names, and one for deleting warp locations
 3. item lore for golden apples and ender eyes with 'set ' and 'warp ' to make it look fancy

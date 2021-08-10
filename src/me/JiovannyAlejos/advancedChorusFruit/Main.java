@@ -9,7 +9,7 @@ import me.JiovannyAlejos.advancedChorusFruit.commands.listLocations;
 public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
-		new listLocations(this);
+		getCommand("listlocations").setExecutor(new ListLocations(this));
 		getServer().getPluginManager().registerEvents(new entityBurn(), this);
 		getServer().getPluginManager().registerEvents(new PlayerConsumeItem(), this);
 		getServer().getConsoleSender().sendMessage("plugin ready");

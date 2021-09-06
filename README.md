@@ -1,9 +1,6 @@
-~~Uhhh so so far this plugin doesn't rly work but i'm working on it~~ 
-Plugin now actually works ~~but isn't that great yet~~ it has all necessary functions now
+Plugin works and has most necessary functions except for teleportation in other dimensions
 
 Discord: Smol Ascended Bee#5061
-
-~~NOTE : chorus fruits aren't working rn so for now it uses golden apples as placeholders~~ Now uses chorus fruit instead of golden apples
 
 Intstructions:
 - to set a warp location, burn an eye of ender with a displayname that starts with 'set ' followed by the name for the location you want to set it as
@@ -13,6 +10,7 @@ Intstructions:
 
 PLANS: (ordered by priority)
 
-1. ~~Check if warp location name exists when burning eye -> changes coordinates for that name if it does, ignores if it's in the same place~~ Completed
-2. ~~Commands for showing a list of warp locations and their names, and one for deleting warp locations~~
-3. item lore for chorus fruit and ender eyes with 'set ' and 'warp ' display name starters to make it look fancy
+1. Make teleportation work in Nether and End dimensions
+2. Fix direction the player faces when teleporting
+3. Once above is completed, only show locations in listlocations cmd of warp locations set in the dimension the player is in
+4. item lore for chorus fruit and ender eyes with 'set ' and 'warp ' display name starters to make it look fancy

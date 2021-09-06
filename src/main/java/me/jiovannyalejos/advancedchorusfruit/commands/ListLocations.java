@@ -8,10 +8,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -27,12 +25,7 @@ public class ListLocations implements CommandExecutor {
             sender.sendMessage("Only players can use commands for this plugin");
             return false;
         }
-        Gson gson = new Gson();
-        Reader reader = null;
-        try {
-            reader = Files.newBufferedReader(Paths.get("C:\\Users\\gaela\\IdeaProjects\\AdvancedChorusFruit\\src\\main\\java\\me\\jiovannyalejos\\advancedchorusfruit\\tpData.json"));
-        } catch (IOException e) {e.printStackTrace();}
-        CoordinateData data = gson.fromJson(reader, CoordinateData.class);
+        CoordinateData data = AdvancedChorusFruit.getData();
         String coordList = "List of warp locations\n";
         if(data.coordinates.size() == 0) {
             coordList = "No warp locations set";

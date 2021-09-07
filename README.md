@@ -1,6 +1,7 @@
 Plugin works and has most necessary functions except for teleportation in other dimensions
 
 Discord: Smol Ascended Bee#5061
+Sorry about the terrible github managing n stuff I don't rly know how to use much of it conventionally
 
 Intstructions:
 - to set a warp location, burn an eye of ender with a displayname that starts with 'set ' followed by the name for the location you want to set it as

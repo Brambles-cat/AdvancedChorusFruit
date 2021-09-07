@@ -40,7 +40,6 @@ public final class AdvancedChorusFruit extends JavaPlugin {
     public void onEnable() {
         dataFolderPath = getDataFolder().getPath();
         dataPath = dataFolderPath + "/TeleportData.json";
-        AdvancedChorusFruit.getData();
         getCommand("listlocations").setExecutor(new ListLocations(this));
         getCommand("removelocation").setExecutor(new RemoveLocation(this));
         getServer().getPluginManager().registerEvents(new PlayerTeleport(), this);

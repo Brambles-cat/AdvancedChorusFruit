@@ -6,7 +6,12 @@ Sorry about the terrible github managing n stuff I don't rly know how to use muc
 Intstructions:
 - to set a warp location, burn an eye of ender with a displayname that starts with 'set ' followed by the name for the location you want to set it as
 - name a chorus fruit 'warp ' followed by the warp locations name you set. Once you eat it, it'll take you to that location
-- to remove a warp location use /removelocation (location name)
+ 
+Commands:
+- removelocation <location name>
+  removes a warp locations data by name from the dimesnion the command was executed in
+- listlocations
+  Sends the player a list of all warp locations in their current dimension
 
 
 PLANS: (ordered by priority)

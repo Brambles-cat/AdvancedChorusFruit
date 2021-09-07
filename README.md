@@ -8,10 +8,13 @@ Intstructions:
 - name a chorus fruit 'warp ' followed by the warp locations name you set. Once you eat it, it'll take you to that location
  
 Commands:
-- removelocation (location name)\n
-  removes a warp locations data by name from the dimesnion the command was executed in
+- removelocation (location name)
+removes a warp locations data by name from the dimesnion the command was executed in
+
 - listlocations
-  Sends the player a list of all warp locations in their current dimension
+Sends the player a list of all warp locations in their current dimension
+
+Omit () when using commands
 
 
 PLANS: (ordered by priority)

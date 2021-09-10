@@ -22,7 +22,6 @@ public class CoordinateData {
             return data.end;
         }
     }
-    // Note: as I wrote this today i've had some weird mental stuff going on so this probably isn't as efficient as I could have made it ;-;
     public static CoordinateData assignData(World.Environment env, CoordinateData data, Dimension dimData) {
         if(env == World.Environment.NORMAL) {
             data.overworld = dimData;
@@ -32,5 +31,15 @@ public class CoordinateData {
             data.end = dimData;
         }
         return data;
+    }
+    public static String format(World.Environment environment) {
+        switch (environment.name()) {
+            case "NORMAL":
+                return "§2Overworld§f";
+            case "NETHER":
+                return "§cNether§f";
+            default:
+                return "§eEnd§f";
+        }
     }
 }

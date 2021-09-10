@@ -20,6 +20,6 @@ Omit () when using commands
 PLANS: (ordered by priority)
 
 1. ~~Make teleportation work in Nether and End dimensions~~ complete!
-2. Fix direction the player faces when teleporting
-3. Once above is completed, only show locations in listlocations cmd of warp locations set in the dimension the player is in
+2. ~~Fix direction the player faces when teleporting~~ complete-ish.... kind of?
+3. ~~Once above is completed, only show locations in listlocations cmd of warp locations set in the dimension the player is in~~ complete!
 4. item lore for chorus fruit and ender eyes with 'set ' and 'warp ' display name starters to make it look fancy

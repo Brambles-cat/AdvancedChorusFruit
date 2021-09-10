@@ -1,4 +1,4 @@
-Plugin works and has most necessary functions except for teleportation in other dimensions
+Plugin works but I'm still going to add a few features
 
 Discord: Smol Ascended Bee#5061
 Sorry about the terrible github managing n stuff I don't rly know how to use much of it conventionally

@@ -4,17 +4,17 @@ Discord: Smol Ascended Bee#5061
 Sorry about the terrible github managing n stuff I don't rly know how to use much of it conventionally
 
 Intstructions:
-- to set a warp location, name an eye of ender "set <location name>" and then burn it at the desired location
-- name a chorus fruit "warp <location name>" then once you eat it, it'll take you to that location
+- to set a warp location, name an eye of ender "set (location name)" and then burn it at the desired location
+- name a chorus fruit "warp (location name)" then once you eat it, it'll take you to that location
  
 Commands:
-- removelocation <location name>
+- removelocation (location name)
 removes a warp locations data by name from the dimesnion the command was executed in
 
 - listlocations
 Sends the player a list of all warp locations in their current dimension
 
-Don't leave in the <> characters
+Don't leave in the () characters
 
 
 PLANS: (ordered by priority)

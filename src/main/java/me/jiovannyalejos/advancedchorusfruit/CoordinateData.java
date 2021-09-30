@@ -3,40 +3,27 @@ package me.jiovannyalejos.advancedchorusfruit;
 import org.bukkit.World;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CoordinateData {
-    public Dimension nether;
-    public Dimension end;
-    public Dimension overworld;
-    public CoordinateData(ArrayList<String> coordinates, ArrayList<String> locNames) {
-        this.nether = new Dimension(coordinates, locNames);
-        this.overworld = new Dimension(coordinates, locNames);
-        this.end = new Dimension(coordinates, locNames);
+    public Map<World.Environment, Map<String, String>> dimensions;
+    public CoordinateData(Map<World.Environment, Map<String, String>> locData) {
+        dimensions = locData;
+        dimensions.put(World.Environment.NORMAL, new HashMap<>());
+        dimensions.put(World.Environment.NETHER, new HashMap<>());
+        dimensions.put(World.Environment.THE_END, new HashMap<>());
     }
-    public static Dimension getDimData(World.Environment env, CoordinateData data) {
-         if(env == World.Environment.NORMAL) {
-            return data.overworld;
-        } else if(env == World.Environment.NETHER) {
-            return data.nether;
-        } else {
-            return data.end;
-        }
-    }
-    public static CoordinateData assignData(World.Environment env, CoordinateData data, Dimension dimData) {
-        if(env == World.Environment.NORMAL) {
-            data.overworld = dimData;
-        } else if(env == World.Environment.NETHER) {
-            data.nether = dimData;
-        } else {
-            data.end = dimData;
-        }
-        return data;
+    public static CoordinateData assignData(World.Environment env, Map<String, String> data, CoordinateData original) {
+        original.dimensions.replace(env, data);
+        return original;
     }
     public static String format(World.Environment environment) {
-        switch (environment.name()) {
-            case "NORMAL":
+        switch (environment) {
+            case NORMAL:
                 return "§2Overworld§f";
-            case "NETHER":
+            case NETHER:
                 return "§cNether§f";
             default:
                 return "§eEnd§f";

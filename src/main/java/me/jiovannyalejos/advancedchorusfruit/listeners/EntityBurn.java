@@ -14,6 +14,7 @@ import org.bukkit.event.entity.EntityCombustByBlockEvent;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.io.*;
+import java.util.Map;
 
 public class EntityBurn implements Listener {
     @EventHandler
@@ -23,23 +24,22 @@ public class EntityBurn implements Listener {
             Item item = (Item) entity;
             ItemMeta meta = item.getItemStack().getItemMeta();
             if(item.getItemStack().getType() == Material.ENDER_EYE && meta.getLore() != null && meta.getLore().contains("set")) {
-                Gson gson = new Gson();
-                CoordinateData data = AdvancedChorusFruit.getData();
                 World.Environment env = event.getEntity().getWorld().getEnvironment();
-                Dimension dimData = CoordinateData.getDimData(env, data);
+                Gson gson = new Gson();
+                CoordinateData original = AdvancedChorusFruit.getData();
+                Map<String, String> data = original.dimensions.get(env);
                 Location entityLoc = entity.getLocation();
                 String displayName = meta.getDisplayName();
-                if(dimData.locNames.contains(displayName)) {
-                    dimData.coordinates.set(dimData.locNames.indexOf(displayName), Math.floor(entityLoc.getX()) + 0.5 + "|" + Math.floor(entityLoc.getY()) + "|" + Math.floor(entityLoc.getZ()) + .5);
+                if(data.containsKey(displayName)) {
+                    data.replace(displayName, Math.floor(entityLoc.getX()) + 0.5 + "|" + Math.floor(entityLoc.getY()) + "|" + Math.floor(entityLoc.getZ()) + .5);
                     Bukkit.broadcastMessage("Changed warp location of \"" + displayName + "\" to X:" + item.getLocation().getBlockX() + " Y:" + item.getLocation().getBlockY() + " Z:" + item.getLocation().getBlockZ());
                 } else {
-                    dimData.coordinates.add(Math.floor(entityLoc.getX()) + 0.5 + "|" + Math.floor(entityLoc.getY()) + "|" + (Math.floor(entityLoc.getZ()) + 0.5));
-                    dimData.locNames.add(displayName);
+                    data.put(displayName, Math.floor(entityLoc.getX()) + 0.5 + "|" + Math.floor(entityLoc.getY()) + "|" + (Math.floor(entityLoc.getZ()) + 0.5));
                     Bukkit.broadcastMessage("New warp location \"" + displayName + "\" set at X:" + item.getLocation().getBlockX() + " Y:" + item.getLocation().getBlockY() + " Z:" + item.getLocation().getBlockZ());
                 }
                 try {
                     Writer writer = new FileWriter(AdvancedChorusFruit.dataPath);
-                    gson.toJson(CoordinateData.assignData(env, data, dimData), writer);
+                    gson.toJson(CoordinateData.assignData(env, data, original), writer);
                     writer.close();
                 } catch (IOException e) {e.printStackTrace();}
             }

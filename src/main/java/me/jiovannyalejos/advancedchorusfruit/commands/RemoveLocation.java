@@ -3,7 +3,6 @@ package me.jiovannyalejos.advancedchorusfruit.commands;
 import com.google.gson.Gson;
 import me.jiovannyalejos.advancedchorusfruit.AdvancedChorusFruit;
 import me.jiovannyalejos.advancedchorusfruit.CoordinateData;
-import me.jiovannyalejos.advancedchorusfruit.Dimension;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,7 +12,7 @@ import org.bukkit.entity.Player;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Arrays;
+import java.util.Map;
 
 public class RemoveLocation implements CommandExecutor {
     private AdvancedChorusFruit plugin;
@@ -23,23 +22,25 @@ public class RemoveLocation implements CommandExecutor {
     }
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        System.out.println(Arrays.toString(args));
         if(args.length != 0) {
             Gson gson = new Gson();
-            CoordinateData data = AdvancedChorusFruit.getData();
-            World.Environment env = ((Player) sender).getWorld().getEnvironment();
-            Dimension dimData = CoordinateData.getDimData(env, data);
+            World.Environment env;
+            if(sender instanceof Player) {
+                env = ((Player) sender).getWorld().getEnvironment();
+            } else {
+                env = World.Environment.NORMAL;
+            }
+            CoordinateData original = AdvancedChorusFruit.getData();
+            Map<String, String> data = original.dimensions.get(env);
             String argLocName = "";
             for(String word : args) {
                 argLocName += word + " ";
             }
-            int index = dimData.locNames.indexOf(argLocName.trim());
-            if(dimData.locNames.contains(argLocName.trim())) {
-                dimData.coordinates.remove(index);
-                dimData.locNames.remove(index);
+            if(data.containsKey(argLocName.trim())) {
+                data.remove(argLocName.trim());
                 try {
                     Writer writer = new FileWriter(AdvancedChorusFruit.dataPath);
-                    gson.toJson(CoordinateData.assignData(env, data, dimData), writer);
+                    gson.toJson(CoordinateData.assignData(env, data, original), writer);
                     writer.close();
                     sender.sendMessage("Successfully removed warp location '" + argLocName.trim() + "'");
                 } catch (IOException e) {e.printStackTrace();}

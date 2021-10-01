@@ -1,7 +1,6 @@
 package me.jiovannyalejos.advancedchorusfruit;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import me.jiovannyalejos.advancedchorusfruit.commands.ListLocations;
 import me.jiovannyalejos.advancedchorusfruit.commands.RemoveLocation;
 import me.jiovannyalejos.advancedchorusfruit.listeners.AnvilPrepareListener;
@@ -42,7 +41,6 @@ public class AdvancedChorusFruit extends JavaPlugin {
     public void onEnable() {
         dataFolderPath = getDataFolder().getPath();
         dataPath = dataFolderPath + "/TeleportData.json";
-        getData();
         getCommand("listlocations").setExecutor(new ListLocations(this));
         getCommand("removelocation").setExecutor(new RemoveLocation(this));
         getServer().getPluginManager().registerEvents(new AnvilPrepareListener(), this);

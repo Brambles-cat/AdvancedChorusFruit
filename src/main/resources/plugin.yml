@@ -9,3 +9,5 @@ commands:
     description: Sends a list of warp location's names and coordinates to the sender
   removelocation:
     description: Removes a warp location by name argument
+  setopexclusive:
+    description: Sets whether only operators are allowed to set and remove warp locations

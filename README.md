@@ -13,16 +13,17 @@ removes a warp locations data by name from the dimesnion the command was execute
 - listlocations
 Sends the player a list of all warp locations in their current dimension
 
+- setopexclusive (true/false)
+Sets whether only server operators can delete or set warp locations
+
 () are for placeholder values
 
 
 PLANS: (ordered by priority)
 
-1. ~~Make teleportation work in Nether and End dimensions~~ done
-2. ~~Fix direction the player faces when teleporting~~ done
-3. ~~Once above is completed, only show locations in listlocations cmd of warp locations set in the dimension the player is in~~ done
+1. ~~Teleportation working in Nether and End dimensions~~ done
+2. ~~Player direction facing saving when teleporting~~ done
+3. ~~Listlocations displays current dimension's warp points~~ done
 4. ~~item lore for chorus fruit and ender eyes with 'set ' and 'warp ' display name starters to make it look fancy~~ done
-5. ~~Use hashmaps, which won't really affect anything except probably making my code cleaner~~ done
-6. Make admin config making fruit usable for admins and non admins
-7. Make plugin work with other dimensions from modifications
-8. Command argument for server command prompt to choose which dimension to remove location from
+5. Admin configs for certain commands or fruit plugin usage
+7. Command arguments thing

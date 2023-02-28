@@ -23,8 +23,12 @@ public class ListWarps implements CommandExecutor {
         Environment env;
         Data data = AdvancedChorusFruit.getData();
         if (sender instanceof Player) {
-            env = ((Player)sender).getWorld().getEnvironment();
-            if(!data.permissions.containsKey(sender.getName()) || !data.permissions.get(sender.getName()).contains("listwarps")) return true;
+            Player player = (Player) sender;
+            env = player.getWorld().getEnvironment();
+            /*if(!data.permissions.containsKey(player.getUniqueId()) || !data.permissions.get(player.getUniqueId()).contains("listwarps")) {
+                sender.sendMessage("Missing permissions");
+                return true;
+            }*/
         } else {
             if (args.length == 0) {
                 sender.sendMessage("Required dimension as an argument, use /listlocations Overworld/Nether/End");

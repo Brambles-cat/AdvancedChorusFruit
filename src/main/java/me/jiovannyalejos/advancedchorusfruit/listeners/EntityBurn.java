@@ -2,7 +2,7 @@ package me.jiovannyalejos.advancedchorusfruit.listeners;
 
 import java.util.Map;
 import me.jiovannyalejos.advancedchorusfruit.AdvancedChorusFruit;
-import me.jiovannyalejos.advancedchorusfruit.CoordinateData;
+import me.jiovannyalejos.advancedchorusfruit.Data;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -23,7 +23,7 @@ public class EntityBurn implements Listener {
             Item item = (Item)entity;
             ItemMeta meta = item.getItemStack().getItemMeta();
             if (item.getItemStack().getType() == Material.ENDER_EYE && meta.getLore() != null && meta.getLore().contains("set")) {
-                CoordinateData original = AdvancedChorusFruit.getData();
+                Data original = AdvancedChorusFruit.getData();
                 if (original.adminExclusive) {
                     for(Entity e : entity.getNearbyEntities(4.0, 4.0, 4.0)) {
                         if (e instanceof Player && !e.isOp()) {

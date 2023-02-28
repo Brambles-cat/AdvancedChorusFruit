@@ -5,8 +5,8 @@ api-version: 1.17
 authors: [ JiovannyAlejos ]
 description: A plugin letting you set specific locations for chorus fruits to take you
 commands:
-  listlocations:
-    description: Sends a list of warp location's names and coordinates to the sender
+  listwarps:
+    description: Sends a list of warp points' names and coordinates to the sender
   removelocation:
     description: Removes a warp location by name argument
   setopexclusive:

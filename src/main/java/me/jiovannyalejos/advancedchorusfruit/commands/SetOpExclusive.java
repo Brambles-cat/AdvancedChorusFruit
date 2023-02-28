@@ -1,7 +1,7 @@
 package me.jiovannyalejos.advancedchorusfruit.commands;
 
 import me.jiovannyalejos.advancedchorusfruit.AdvancedChorusFruit;
-import me.jiovannyalejos.advancedchorusfruit.CoordinateData;
+import me.jiovannyalejos.advancedchorusfruit.Data;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,7 +17,7 @@ public class SetOpExclusive implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         System.out.println(sender.isOp());
         if (sender.isOp() && args.length != 0) {
-            CoordinateData data = AdvancedChorusFruit.getData();
+            Data data = AdvancedChorusFruit.getData();
             if (args[0].equalsIgnoreCase("true")) {
                 data.adminExclusive = true;
             } else {

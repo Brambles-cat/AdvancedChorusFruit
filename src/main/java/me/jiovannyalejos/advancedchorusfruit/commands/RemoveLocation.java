@@ -2,7 +2,7 @@ package me.jiovannyalejos.advancedchorusfruit.commands;
 
 import java.util.Map;
 import me.jiovannyalejos.advancedchorusfruit.AdvancedChorusFruit;
-import me.jiovannyalejos.advancedchorusfruit.CoordinateData;
+import me.jiovannyalejos.advancedchorusfruit.Data;
 import org.bukkit.World.Environment;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,7 +18,7 @@ public class RemoveLocation implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        CoordinateData original = AdvancedChorusFruit.getData();
+        Data original = AdvancedChorusFruit.getData();
         if (original.adminExclusive && !sender.isOp()) {
             sender.sendMessage("Missing operator permissions");
             return true;

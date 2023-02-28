@@ -49,7 +49,6 @@ public class RemoveLocation implements CommandExecutor {
                             sender.sendMessage("This dimension doesn't exist, use /removelocation Overworld/Nether/End (location name)");
                             return false;
                     }
-
                     i = 1;
                 }
 
@@ -63,12 +62,12 @@ public class RemoveLocation implements CommandExecutor {
                 if (data.containsKey(argLocName.toString().trim())) {
                     data.remove(argLocName.toString().trim());
                     AdvancedChorusFruit.writeData(env, data, original);
-                    sender.sendMessage(argLocName.append("has been successfully removed").toString());
+                    sender.sendMessage(argLocName.append("has been removed").toString());
                 } else {
-                    sender.sendMessage("No warp location exists with the name '" + argLocName.toString().trim() + "'");
+                    sender.sendMessage("No warp point found with name '" + argLocName.toString().trim() + "'");
                 }
             } else {
-                sender.sendMessage("Warp location name needed to remove it");
+                sender.sendMessage("Nothing removed; Warp point name required");
             }
 
             return true;

@@ -52,9 +52,9 @@ public class ListWarps implements CommandExecutor {
             }
         }
         Map<String, String> warpPoints = data.dimensions.get(env);
-        StringBuilder coordList = new StringBuilder("No warp locations set");
+        StringBuilder coordList = new StringBuilder("No warp points set");
         if (!warpPoints.isEmpty()) {
-            coordList = new StringBuilder("List of warp locations in the " + Data.format(env) + "\n");
+            coordList = new StringBuilder("List of warp points in the " + Data.format(env) + "\n");
 
             for(String key : warpPoints.keySet()) {
                 String[] coordinates = warpPoints.get(key).split(Pattern.quote("|"));

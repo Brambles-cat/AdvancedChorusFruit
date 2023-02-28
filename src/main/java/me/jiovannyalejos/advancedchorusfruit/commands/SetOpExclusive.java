@@ -28,7 +28,7 @@ public class SetOpExclusive implements CommandExecutor {
                 data.adminExclusive = false;
             }
 
-            sender.sendMessage("Operator exclusive setting and removing warp locations set to " + args[0].toLowerCase());
+            sender.sendMessage("Operator only setting and removing warp points: " + args[0].toLowerCase());
             AdvancedChorusFruit.writeData(data);
         }
 

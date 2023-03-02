@@ -2,8 +2,8 @@ package me.jiovannyalejos.advancedchorusfruit.commands;
 
 import java.util.Map;
 import java.util.regex.Pattern;
-import me.jiovannyalejos.advancedchorusfruit.AdvancedChorusFruit;
-import me.jiovannyalejos.advancedchorusfruit.Data;
+
+import me.jiovannyalejos.advancedchorusfruit.PluginData;
 import org.bukkit.World.Environment;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,17 +11,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class ListWarps implements CommandExecutor {
-    private AdvancedChorusFruit plugin;
-
-    public ListWarps(AdvancedChorusFruit plugin) {
-        this.plugin = plugin;
-        plugin.getCommand("listwarps").setExecutor(this);
-    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Environment env;
-        Data data = AdvancedChorusFruit.getData();
+        PluginData data = PluginData.getData();
         if (sender instanceof Player) {
             Player player = (Player) sender;
             env = player.getWorld().getEnvironment();
@@ -31,7 +25,7 @@ public class ListWarps implements CommandExecutor {
             }*/
         } else {
             if (args.length == 0) {
-                sender.sendMessage("Required dimension as an argument, use /listlocations Overworld/Nether/End");
+                sender.sendMessage("Required dimension as an argument, use /listwarps Overworld/Nether/End");
                 return false;
             }
 
@@ -54,7 +48,7 @@ public class ListWarps implements CommandExecutor {
         Map<String, String> warpPoints = data.dimensions.get(env);
         StringBuilder coordList = new StringBuilder("No warp points set");
         if (!warpPoints.isEmpty()) {
-            coordList = new StringBuilder("List of warp points in the " + Data.format(env) + "\n");
+            coordList = new StringBuilder("List of warp points in the " + PluginData.format(env) + "\n");
 
             for(String key : warpPoints.keySet()) {
                 String[] coordinates = warpPoints.get(key).split(Pattern.quote("|"));

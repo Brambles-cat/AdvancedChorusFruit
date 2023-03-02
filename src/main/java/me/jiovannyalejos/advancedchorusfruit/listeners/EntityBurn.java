@@ -26,8 +26,8 @@ public class EntityBurn implements Listener {
                 boolean permitted = false;
                 for(Entity e : eye.getNearbyEntities(4.0, 4.0, 4.0)) {
                     if(!(e instanceof Player)) continue;
-                    if (PluginData.getPermissions(e.getUniqueId()).stream().noneMatch(p -> p.equals("all") || p.equals("set_warps"))) {
-                        e.sendMessage("Missing operator permissions");
+                    if (!e.isOp() && PluginData.getPermissions(e.getUniqueId()).stream().noneMatch(p -> p.equals("all") || p.equals("set_warps"))) {
+                        e.sendMessage("Missing permissions");
                     } else permitted = true;
                 }
                 if(!permitted) return;

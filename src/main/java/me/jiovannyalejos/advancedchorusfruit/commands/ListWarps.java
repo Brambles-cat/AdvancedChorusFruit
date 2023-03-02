@@ -20,7 +20,7 @@ public class ListWarps implements CommandExecutor {
             Player player = (Player) sender;
             env = player.getWorld().getEnvironment();
             List<String> permissions = PluginData.getPermissions(player.getUniqueId());
-            if(!(permissions.contains("listing") || permissions.contains("all"))) {
+            if(!(sender.isOp() || permissions.contains("listing") || permissions.contains("all"))) {
                 sender.sendMessage("Missing permissions");
                 return false;
             }

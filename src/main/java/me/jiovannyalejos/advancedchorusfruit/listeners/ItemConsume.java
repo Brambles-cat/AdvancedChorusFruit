@@ -25,7 +25,7 @@ public class ItemConsume implements Listener {
         if (meta.getLore() != null && meta.getLore().contains("warp")) {
             Player consumer = event.getPlayer();
             List<String> permissions = PluginData.getPermissions(consumer.getUniqueId());
-            if (!permissions.contains("no_warping"))
+            if (!permissions.contains("no_warping") || consumer.isOp())
                 consumers.put(event.getPlayer().getUniqueId(), meta.getDisplayName());
             else consumer.sendMessage("Missing permission");
         }

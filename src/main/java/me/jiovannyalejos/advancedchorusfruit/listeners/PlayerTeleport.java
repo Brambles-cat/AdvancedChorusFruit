@@ -3,7 +3,8 @@ package me.jiovannyalejos.advancedchorusfruit.listeners;
 import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Pattern;
-import me.jiovannyalejos.advancedchorusfruit.AdvancedChorusFruit;
+
+import me.jiovannyalejos.advancedchorusfruit.PluginData;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,7 +19,7 @@ public class PlayerTeleport implements Listener {
             Player player = event.getPlayer();
             UUID playerId = player.getUniqueId();
             if (ItemConsume.consumers.containsKey(playerId)) {
-                Map<String, String> data = AdvancedChorusFruit.getData().dimensions.get(player.getWorld().getEnvironment());
+                Map<String, String> data = PluginData.getData().dimensions.get(player.getWorld().getEnvironment());
                 String warpLocation = ItemConsume.consumers.get(playerId);
                 if (data.containsKey(warpLocation)) {
                     String[] coords = data.get(warpLocation).split(Pattern.quote("|"));

@@ -15,7 +15,9 @@ public class AnvilPrepareListener implements Listener {
         AnvilInventory inv = event.getInventory();
         if (inv.getItem(1) == null && inv.getItem(0) != null && inv.getItem(0).getItemMeta().getLore() == null) {
             List<String> lore = new ArrayList<>();
-            ItemMeta meta = event.getResult().getItemMeta();
+            ItemMeta meta = null;
+            try {meta = event.getResult().getItemMeta();}
+            catch (NullPointerException e) {e.printStackTrace(); return;}
             if (inv.getItem(0).getType() == Material.CHORUS_FRUIT && inv.getRenameText().startsWith("warp ") && inv.getRenameText().length() > 5) {
                 lore.add("warp");
                 meta.setDisplayName(inv.getRenameText().substring(5));

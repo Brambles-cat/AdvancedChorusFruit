@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 public class RemoveWarp implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (sender instanceof Player && PluginData.getPermissions(((Player) sender).getUniqueId()).contains("remove_warps")) {
+        if (sender instanceof Player && !PluginData.getPermissions(((Player) sender).getUniqueId()).contains("remove_warps")) {
             sender.sendMessage("Missing permissions");
             return true;
         } else {

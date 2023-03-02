@@ -27,6 +27,7 @@ Permissions:
 
 Known issues:
 - Potential warp setting without permission under specific circumstances
+- Chorus fruit available area check interferes with ability to go to warp points
 - Message spam when warp point set in rain
 
 PLANS: (ordered by priority)

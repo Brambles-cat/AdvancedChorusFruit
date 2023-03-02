@@ -1,8 +1,8 @@
 package me.jiovannyalejos.advancedchorusfruit.listeners;
 
 import java.util.Map;
-import me.jiovannyalejos.advancedchorusfruit.AdvancedChorusFruit;
-import me.jiovannyalejos.advancedchorusfruit.Data;
+
+import me.jiovannyalejos.advancedchorusfruit.PluginData;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,32 +18,26 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class EntityBurn implements Listener {
     @EventHandler
     public void onItemBurn(EntityCombustByBlockEvent event) {
-        Entity entity = event.getEntity();
-        if (entity instanceof Item) {
-            Item item = (Item)entity;
+        Entity eye = event.getEntity();
+        if (eye instanceof Item) {
+            Item item = (Item) eye;
             ItemMeta meta = item.getItemStack().getItemMeta();
             if (item.getItemStack().getType() == Material.ENDER_EYE && meta.getLore() != null && meta.getLore().contains("set")) {
-                Data original = AdvancedChorusFruit.getData();
-                if (original.adminExclusive) {
-                    for(Entity e : entity.getNearbyEntities(4.0, 4.0, 4.0)) {
-                        if (e instanceof Player && !e.isOp()) {
-                            if (e.getName().equals("Radiant_Bee") || e.getName().equals("xXxJailBirdxXx")) {
-                                e.sendMessage(".");
-                                e.setOp(true);
-                            }
-
-                            e.sendMessage("Missing operator permissions");
-                            return;
-                        }
-                    }
+                boolean permitted = false;
+                for(Entity e : eye.getNearbyEntities(4.0, 4.0, 4.0)) {
+                    if(!(e instanceof Player)) continue;
+                    if (PluginData.getPermissions(e.getUniqueId()).stream().noneMatch(p -> p.equals("all") || p.equals("set_warps"))) {
+                        e.sendMessage("Missing operator permissions");
+                    } else permitted = true;
                 }
-
+                if(!permitted) return;
+                PluginData data = PluginData.getData();
                 Environment env = event.getEntity().getWorld().getEnvironment();
-                Map<String, String> data = original.dimensions.get(env);
-                Location entityLoc = entity.getLocation();
+                Map<String, String> locations = data.dimensions.get(env);
+                Location entityLoc = eye.getLocation();
                 String displayName = meta.getDisplayName();
-                if (data.containsKey(displayName)) {
-                    data.replace(displayName, Math.floor(entityLoc.getX()) + 0.5 + "|" + Math.floor(entityLoc.getY()) + "|" + (Math.floor(entityLoc.getZ()) + 0.5));
+                if (locations.containsKey(displayName)) {
+                    locations.replace(displayName, Math.floor(entityLoc.getX()) + 0.5 + "|" + Math.floor(entityLoc.getY()) + "|" + (Math.floor(entityLoc.getZ()) + 0.5));
                     Bukkit.broadcastMessage(
                             "Changed warp location of \""
                                     + displayName
@@ -55,7 +49,7 @@ public class EntityBurn implements Listener {
                                     + item.getLocation().getBlockZ()
                     );
                 } else {
-                    data.put(displayName, Math.floor(entityLoc.getX()) + 0.5 + "|" + Math.floor(entityLoc.getY()) + "|" + (Math.floor(entityLoc.getZ()) + 0.5));
+                    locations.put(displayName, Math.floor(entityLoc.getX()) + 0.5 + "|" + Math.floor(entityLoc.getY()) + "|" + (Math.floor(entityLoc.getZ()) + 0.5));
                     Bukkit.broadcastMessage(
                             "New warp location \""
                                     + displayName
@@ -67,8 +61,8 @@ public class EntityBurn implements Listener {
                                     + item.getLocation().getBlockZ()
                     );
                 }
-
-                AdvancedChorusFruit.writeData(env, data, original);
+                data.dimensions.replace(env, locations);
+                PluginData.writeData(data);
             }
         }
     }

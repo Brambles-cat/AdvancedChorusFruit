@@ -7,7 +7,12 @@ description: A plugin letting you set specific locations for chorus fruits to ta
 commands:
   listwarps:
     description: Sends a list of warp points' names and coordinates to the sender
-  removelocation:
-    description: Removes a warp location by name argument
-  setopexclusive:
-    description: Sets whether only operators are allowed to set and remove warp locations
+  removewarp:
+    description: Removes a specified warp point
+  permission:
+    description:
+      Modifies players ability to use certain parts of the plugin
+      All - All permissions except NoWarping
+      Set_Warps - Allow setting warp points
+      Remove_Warps - Allow removing of existing warp points
+      No_Warping - Disallow using warp points

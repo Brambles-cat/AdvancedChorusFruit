@@ -55,15 +55,6 @@ public class PluginData {
         return data;
     }
 
-    /*public static void writeData(Environment env, Map<String, String> data, PluginData original) {
-        original.dimensions.replace(env, data);
-        try {
-            Writer writer = new FileWriter(dataPath);
-            gson.toJson(original, writer);
-            writer.close();
-        } catch (IOException exception) {exception.printStackTrace();}
-    }*/
-
     public static void writeData(PluginData data) {
         try {
             Writer writer = new FileWriter(dataPath);

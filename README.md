@@ -37,4 +37,6 @@ PLANS: (ordered by priority)
 4. ~~item lore for chorus fruit and ender eyes with 'set ' and 'warp ' display name starters to make it look fancy~~ done
 5. ~~Admin configs for certain commands or fruit plugin usage~~ done
 7. ~~Command arguments thing~~ done
-8. Add particle effects when setting warp points
+8. Add default permissions
+9. Add private warp points with "bound" eyes of ender and permission to use
+10. Add eye enchantment effect and particle effects when setting warp points

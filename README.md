@@ -25,5 +25,7 @@ PLANS: (ordered by priority)
 2. ~~Player direction facing saving when teleporting~~ done
 3. ~~Listlocations displays current dimension's warp points~~ done
 4. ~~item lore for chorus fruit and ender eyes with 'set ' and 'warp ' display name starters to make it look fancy~~ done
-5. Admin configs for certain commands or fruit plugin usage
-7. Command arguments thing
+5. ~~Admin configs for certain commands or fruit plugin usage~~ done
+7. ~~Command arguments thing~~ done
+8. Fix rain message spam
+9. Add particle effects when setting warp points

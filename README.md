@@ -17,11 +17,11 @@ Sends the player a list of all warp locations in their current dimension
 Sets what functions or commands players are allowed to use with the plugin
 
 Permissions:
-    - All - All permissions except NoWarping
-    - Set_Warps - Allow setting warp points
-    - Remove_Warps - Allow removing of existing warp points
-    - Listing - Allow seeing a list of all warp points
-    - No_Warping - Disallows using warp points by eating chorus fruit
+ - All - All permissions except NoWarping
+ - Set_Warps - Allow setting warp points
+ - Remove_Warps - Allow removing of existing warp points
+ - Listing - Allow seeing a list of all warp points
+ - No_Warping - Disallows using warp points by eating chorus fruit
 
 () are for placeholder values
 

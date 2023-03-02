@@ -3,18 +3,25 @@ Plugin works but I'm still going to add a few features, open to suggestions on w
 Sorry about the terrible github managing n stuff I don't rly know how to use much of it conventionally
 
 Intstructions:
-- to set a warp location, name an eye of ender "set (location name)" and then burn it at the desired location
-- name a chorus fruit "warp (location name)" then once you eat it, it'll take you to that location
+- to set a warp point, name an eye of ender "set (location name)" and then burn it at the desired location
+- name a chorus fruit "warp (location name)" then, once eaten, it'll take you to that location
  
 Commands:
-- removelocation (location name)
-removes a warp locations data by name from the dimesnion the command was executed in
+- removewarp (location name)
+removes a warp points data by name from the dimension the command was executed in
 
-- listlocations
+- listwarps
 Sends the player a list of all warp locations in their current dimension
 
-- setopexclusive (true/false)
-Sets whether only server operators can delete or set warp locations
+- permission (give/list/remove) (player) [permission] // [] if it isn't list
+Sets what functions or commands players are allowed to use with the plugin
+
+Permissions:
+    - All - All permissions except NoWarping
+    - Set_Warps - Allow setting warp points
+    - Remove_Warps - Allow removing of existing warp points
+    - Listing - Allow seeing a list of all warp points
+    - No_Warping - Disallows using warp points by eating chorus fruit
 
 () are for placeholder values
 

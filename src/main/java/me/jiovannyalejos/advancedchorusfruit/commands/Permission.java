@@ -18,7 +18,8 @@ public class Permission implements CommandExecutor, TabCompleter {
             "all",
             "set_warps",
             "remove_warps",
-            "no_warping"
+            "no_warping",
+            "listing"
     };
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

@@ -1,5 +1,6 @@
 package me.jiovannyalejos.advancedchorusfruit.commands;
 
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -15,14 +16,14 @@ public class ListWarps implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Environment env;
-        PluginData data = PluginData.getData();
         if (sender instanceof Player) {
             Player player = (Player) sender;
             env = player.getWorld().getEnvironment();
-            /*if(!data.permissions.containsKey(player.getUniqueId()) || !data.permissions.get(player.getUniqueId()).contains("listwarps")) {
+            List<String> permissions = PluginData.getPermissions(player.getUniqueId());
+            if(!(permissions.contains("listing") || permissions.contains("all"))) {
                 sender.sendMessage("Missing permissions");
-                return true;
-            }*/
+                return false;
+            }
         } else {
             if (args.length == 0) {
                 sender.sendMessage("Required dimension as an argument, use /listwarps Overworld/Nether/End");
@@ -45,7 +46,7 @@ public class ListWarps implements CommandExecutor {
                     return false;
             }
         }
-        Map<String, String> warpPoints = data.dimensions.get(env);
+        Map<String, String> warpPoints = PluginData.getData().dimensions.get(env);
         StringBuilder coordList = new StringBuilder("No warp points set");
         if (!warpPoints.isEmpty()) {
             coordList = new StringBuilder("List of warp points in the " + PluginData.format(env) + "\n");

@@ -68,10 +68,33 @@ public class PluginData {
         } catch (IOException e) { e.printStackTrace(); }
     }
 
-    public static List<String> getPermissions(UUID playerId) {
-        List<String> permissions = dataInstance.playerPermissions.get(playerId);
+    public static List<String> getPermissions(Player player) {
+        if (player.isOp())
+            return dataInstance.defaultPermissions.stream().map(
+                    permission -> permission.startsWith("!") ? permission.substring(1) : permission
+            ).toList();
 
-        return permissions != null ? permissions : dataInstance.defaultPermissions;
+        List<String> playerPermissions = dataInstance.playerPermissions.get(player.getUniqueId());
+
+        if (playerPermissions == null)
+            return new ArrayList<>(dataInstance.defaultPermissions);
+
+        List<String> playerPermissionsCopy = new ArrayList<>(playerPermissions);
+
+        dataInstance.defaultPermissions.forEach(permission -> {
+            if (playerPermissions.stream().noneMatch(playerPermission -> playerPermission.endsWith(permission.substring(1))))
+                playerPermissionsCopy.add(permission);
+        });
+
+        return playerPermissionsCopy;
+    }
+
+    public static boolean playerHasPermission(Player player, PluginPermission permission) {
+        if (player.isOp()) return true;
+
+        List<String> permissions = getPermissions(player);
+
+        return permissions.contains(permission.id());
     }
 
     public static List<String> getPermissions() { return dataInstance.defaultPermissions; }
@@ -91,17 +114,6 @@ public class PluginData {
 
         currentPermissions.add(permission.id());
         currentPermissions.remove(allowed ? "!" + permission.id() : permission.id());
-    }
-    
-    public static boolean playerHasPermission(Player player, PluginPermission permission) {
-        if (player.isOp()) return true;
-
-        List<String> permissions = dataInstance.playerPermissions.get(player.getUniqueId());
-        
-        if (permissions == null)
-            return dataInstance.defaultPermissions.contains(permission.id());
-
-        return permissions.contains(permission.id()) || (!permissions.contains("!" + permission.id()) && dataInstance.defaultPermissions.contains(permission.id()));
     }
 
     public static void resetPermissions(UUID playerId) {

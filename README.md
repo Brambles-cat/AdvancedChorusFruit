@@ -1,4 +1,6 @@
-Plugin now updated for Minecraft 1.21, also I'm open to any suggestions on what to add or change
+Plugin now updated for Minecraft 1.21
+
+I lost my other mc account so I'm not fully able to test everything here, so please lmk if you find bugs or have any feedback or suggestions :)
 
 () indicate placeholder values, | is meant as 'or'
 
@@ -24,10 +26,10 @@ Permissions:
  - set_warps - Needed to set warp points
  - remove_warps - Needed to remove existing warp points
  - list_warps - Needed to use /listwarps to see a list of all warp points
+ - use_warps - Needed to teleport to warp points via chorus fruits
 
 ### Known issues:
 - Chorus fruit available area check interferes with ability to go to warp points
-- Message spam when warp point set in rain
 - Permissions break if manual edits in the plugin data file leave !permission and permission together
 
 ### To Do: (by priority)

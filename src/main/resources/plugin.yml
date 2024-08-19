@@ -14,4 +14,5 @@ commands:
       Modifies players ability to use certain parts of the plugin
       set_warps - Needed for setting warp points
       remove_warps - Needed for removing existing warp points with the /removewarp command
-      Listing - Needed for running /listwarps to see a list of all warp points
+      list_warps - Needed for running /listwarps to see a list of all warp points
+      use_warps - Needed for teleporting to warp points via chorus fruit

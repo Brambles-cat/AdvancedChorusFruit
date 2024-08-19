@@ -32,6 +32,8 @@ public class EntityBurn implements Listener {
 
             if (dropper == null) return;
 
+            item.getItemStack().setAmount(0);
+
             if (!PluginData.playerHasPermission(dropper, PluginPermission.SET_WARPS)) {
                 dropper.sendMessage("Couldn't set warp point; Missing Permissions");
                 return;
@@ -54,7 +56,8 @@ public class EntityBurn implements Listener {
                                 + " Z:"
                                 + item.getLocation().getBlockZ()
                 );
-            } else {
+            }
+            else {
                 warpPoints.put(displayName, Math.floor(entityLoc.getX()) + 0.5 + "|" + Math.floor(entityLoc.getY()) + "|" + (Math.floor(entityLoc.getZ()) + 0.5));
                 Bukkit.broadcastMessage(
                         "New warp location \""

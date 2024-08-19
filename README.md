@@ -7,6 +7,8 @@ I lost my other mc account so I'm not fully able to test everything here, so ple
 ### Usage:
 - To set a warp point, name an eye of ender "set (location name)" and then burn it at the desired location
 - name a chorus fruit "warp (location name)" then, once eaten, it'll take you to that location
+
+Note: To update from older versions, this plugins' old data folder should be deleted, as the current one uses a different format
  
 ### Commands:
 

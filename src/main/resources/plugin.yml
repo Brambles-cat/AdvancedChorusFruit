@@ -1,0 +1,17 @@
+name: AdvancedChorusFruit
+version: 1.4.0
+main: com.brambles.acf.AdvancedChorusFruit
+api-version: 1.21.1
+authors: [ Brambles_c ]
+description: A plugin letting you set specific locations for chorus fruits to take you
+commands:
+  listwarps:
+    description: Sends a list of warp points' names and coordinates to the sender
+  removewarp:
+    description: Removes a specified warp point
+  permission:
+    description:
+      Modifies players ability to use certain parts of the plugin
+      set_warps - Needed for setting warp points
+      remove_warps - Needed for removing existing warp points with the /removewarp command
+      Listing - Needed for running /listwarps to see a list of all warp points
